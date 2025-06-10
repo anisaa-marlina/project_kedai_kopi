@@ -45,7 +45,7 @@ body {
 }
 
 .navbar .navbar-nav a {
-  color: #ffff;
+  color: #fff;
   display: inline-block;
   font-size: 1.3rem;
   margin: 0 1rem;
@@ -78,7 +78,7 @@ body {
 }
 
 #hamburger-menu {
-    display: none;
+  display: none;
 }
 
 /* Media Queris */
@@ -96,14 +96,38 @@ body {
     font-size: 62.5%;
   }
 
-
-  #hamburger-menu{
+  #hamburger-menu {
     display: inline-block;
   }
 
   .navbar .navbar-nav {
-    display
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    height: 100vh;
+    transition: 0, 3s;
   }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+.navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+
+ .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
 }
 
 /* Mobile Phone */
