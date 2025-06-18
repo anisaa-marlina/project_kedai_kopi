@@ -637,10 +637,6 @@ footer .credit a {
   .contact .row form {
     padding-top: 0;
   }
-
-  .modal-content {
-    flex-wrap: wrap;
-  }
 }
 
 /* Mobile Phone */
