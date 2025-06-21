@@ -180,6 +180,12 @@ body {
   background-size: cover;
   background-position: center;
   position: relative;
+  /*
+    Perbedaan masking dan clip-path:
+    - Masking dapat menghasilkan efek transparan atau gradasi, dan mendukung bentuk bebas seperti SVG.
+    - Clip-path hanya memotong elemen dengan bentuk tegas seperti lingkaran atau polygon.
+    - Masking lebih fleksibel untuk efek visual yang artistik.
+  */
   -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
   mask-image: linear-gradient(rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
 }
@@ -270,7 +276,7 @@ body {
 
 .about .row .about-img img {
   width: 100%;
-  -webkit-mask-image: url("img/menu/coffe\ beans.svg");
+  -webkit-mask-image: url("img/menu/splash.svg");
   -webkit-mask-size: 50%;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
