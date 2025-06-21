@@ -270,6 +270,10 @@ body {
 
 .about .row .about-img img {
   width: 100%;
+  -webkit-mask-image: url("img/menu/coffe\ beans.svg");
+  -webkit-mask-size: 50%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 .about .row .content {
@@ -286,9 +290,9 @@ body {
 .menu p,
 .products p,
 .contact p {
-  text-align: center;
+  text-align: left;
   max-width: 30rem;
-  margin: auto;
+  margin-left: 0;
   font-weight: 100;
   line-height: 1.6;
 }
