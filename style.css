@@ -1,8 +1,10 @@
+/* Root Variables */
 :root {
   --primary: #b6895b;
   --bg: #010101;
 }
 
+/* Reset dan Style Dasar (Global Reset & Base Styles) */
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +24,7 @@ body {
   color: #fff;
 }
 
-/* Navbar */
+/* Styling Navbar (Navigasi Utama) */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -48,6 +50,7 @@ body {
   color: var(--primary);
 }
 
+/* Link Navigasi di Navbar */
 .navbar .navbar-nav a {
   color: #fff;
   display: inline-block;
@@ -204,6 +207,7 @@ body {
   );
 } */
 
+/* Masking Custom dengan SVG (Custom Shape Masking) */
 .hero .mask-container {
   position: absolute;
   /* background-color: salmon;  */
@@ -214,6 +218,7 @@ body {
   -webkit-mask-position: center;
 }
 
+/* Konten Utama di Hero Section */
 .hero .content {
   padding: 1.4rem 7%;
   /* max-width: 60rem; */
@@ -284,6 +289,7 @@ body {
   flex: 1 1 45rem;
 }
 
+/* Efek Masking pada Gambar About */
 .about .row .about-img img {
   width: 100%;
   -webkit-mask-image: url("/img/menu/splash.svg");
