@@ -35,7 +35,7 @@
 
 
     <!-- Navbar start -->
-    <nav class="navbar">
+    <nav class="navbar" x-data>
       <a href="#" class="navbar-logo">Kenangan<span>senja</span>.</a>
 
       <div class="navbar-nav">
@@ -47,12 +47,15 @@
       </div>
 
       <div class="navbar-extra">
-        <a href="#" id="search-button"><i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart-button"
-          ><i data-feather="shopping-cart"></i
-        ></a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-      </div>
+  <a href="#" id="search-button"><i data-feather="search"></i></a>
+  <a href="#" id="shopping-cart-button" class="cart-button">
+    <i data-feather="shopping-cart"></i>
+    <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+  </a>
+  <a href="#" id="hamburger-menu">
+    <i data-feather="menu"></i>
+  </a>
+</div>
 
       <!-- search form start -->
       <div class="search-form">
@@ -62,33 +65,28 @@
       <!-- search form end -->
 
       <!-- shopping cart start -->
-      <div class="shopping-cart">
-        <div class="cart-item">
-          <img src="img/products/1.jpeg" alt="Product 1" />
-          <div class="item-detail">
-            <h3>Coffe Mountain</h3>
-            <div class="item-price">IDR 35K</div>
-          </div>
-          <i data-feather="trash-2" class="remove-item"></i>
-        </div>
-        <div class="cart-item">
-          <img src="img/products/2.jpg" alt="Product 2" />
-          <div class="item-detail">
-            <h3>Coffe Beans</h3>
-            <div class="item-price">IDR 55K</div>
-          </div>
-          <i data-feather="trash-2" class="remove-item"></i>
-        </div>
-        <div class="cart-item">
-          <img src="img/products/3.jpg" alt="Product 3" />
-          <div class="item-detail">
-            <h3>Coffe Sedferay</h3>
-            <div class="item-price">IDR 65K</div>
-          </div>
-          <i data-feather="trash-2" class="remove-item"></i>
+<div class="shopping-cart">
+  <template x-for="(item, index) in $store.cart.items" :key="index">
+    <div class="cart-item">
+      <img :src="`img/products/${item.img}`" :alt="item.name" />
+      <div class="item-detail">
+        <h3 x-text="item.name"></h3>
+        <div class="item-price">
+          <span x-text="$store.cart.rupiah(item.price)"></span> ×
+          <button @click="$store.cart.decrease(item)" class="qty-btn">−</button>
+          <button @click="$store.cart.increase(item)" class="qty-btn">+</button>
+          =
         </div>
       </div>
-      <!-- shopping cart end -->
+    </div>
+  </template>
+</div>
+<!-- shopping cart end -->
+
+
+
+
+
     </nav>
     <!-- Navbar end -->
 
@@ -190,7 +188,7 @@
 
         <!-- Ikon Aksi -->
         <div class="product-icons">
-          <a href="#">
+          <a href="#" @click.prevent="$store.cart.add(item)">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <use href="img/feather-sprite.svg#shopping-cart" />
             </svg>
@@ -231,7 +229,7 @@
           </div>
 
           <!-- Harga -->
-          <div class="product-price"><span x-text="item.price"></span>
+          <div class="product-price"><span x-text="rupiah(item.price)"></span>
           </div>
         </div>
 
