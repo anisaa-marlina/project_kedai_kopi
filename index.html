@@ -181,80 +181,59 @@
 
     <!-- products section start -->
 <section class="products" id="products" x-data="products">
-  <h2><span>Produk Unggulan</span> Kami</h2>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-    cupiditate eum tenetur.
-  </p>
-
   <div class="row">
-<template x-for="(item, index) in items" x-key="index">
+    <template x-for="item in items" :key="item.id">
+      <div class="product-card">
 
-    <div class="product-card">
-  <!-- Ikon Produk -->
-  <div class="product-icons">
-    <a href="#">
-      <svg
-        width="24"
-        height="24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <use href="img/feather-sprite.svg#shopping-cart" />
-      </svg>
-    </a>
-    <a href="#" class="item-detail-button">
-      <svg
-        width="24"
-        height="24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <use href="img/feather-sprite.svg#eye" />
-      </svg>
-    </a>
-  </div>
-
-  <!-- Gambar Produk -->
-  <div class="product-image">
-    <img :src="`img/products/${item.img}`" :alt="item.name" />
-  </div>
-
-  <!-- Konten Produk -->
-  <div class="product-content">
-    <h3 x-text="item.name"></h3>
-
-    <!-- Rating Bintang -->
-<div class="product-stars">
-  <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <use href="img/feather-sprite.svg#star" />
-  </svg>
-  <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <use href="img/feather-sprite.svg#star" />
-  </svg>
-  <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <use href="img/feather-sprite.svg#star" />
-  </svg>
-  <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <use href="img/feather-sprite.svg#star" />
-  </svg>
-  <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <use href="img/feather-sprite.svg#star" />
-  </svg>
-    </div>
-  </div>
-</div>
-
+        <!-- Ikon Aksi -->
+        <div class="product-icons">
+          <a href="#">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#shopping-cart" />
+            </svg>
+          </a>
+          <a href="#" class="item-detail-button">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#eye" />
+            </svg>
+          </a>
         </div>
-        <div class="product-price"><span x-text="item.price"></span></div>
+
+        <!-- Gambar Produk -->
+        <div class="product-image">
+          <img :src="`img/products/${item.img}`" :alt="item.name" />
+        </div>
+
+        <!-- Konten Produk -->
+        <div class="product-content">
+          <h3 x-text="item.name"></h3>
+
+          <!-- Rating Bintang Tetap (5) -->
+          <div class="product-stars">
+            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#star" />
+            </svg>
+            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#star" />
+            </svg>
+            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#star" />
+            </svg>
+            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#star" />
+            </svg>
+            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="img/feather-sprite.svg#star" />
+            </svg>
+          </div>
+
+          <!-- Harga -->
+          <div class="product-price">
+            IDR <span x-text="(item.price / 1000) + 'K'"></span>
+          </div>
+        </div>
+
       </div>
-    </div>
     </template>
   </div>
 </section>
