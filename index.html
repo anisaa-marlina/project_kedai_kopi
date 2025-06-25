@@ -73,16 +73,18 @@
         <h3 x-text="item.name"></h3>
         <div class="item-price">
           <span x-text="$store.cart.rupiah(item.price)"></span> ×
-          <button @click="$store.cart.decrease(item)" class="qty-btn">−</button>
-          <button @click="$store.cart.increase(item)" class="qty-btn">+</button>
-          =
+          <button id="remove" @click="$store.cart.decrease(item)">−</button>
+          <span x-text="item.quantity"></span>
+          <button id="add" @click="$store.cart.increase(item)">+</button>
+          = <span x-text="$store.cart.rupiah(item.total)"></span>
         </div>
       </div>
     </div>
   </template>
 </div>
-
 <!-- shopping cart end -->
+
+
 
 
     </nav>

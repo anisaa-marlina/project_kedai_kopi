@@ -8,6 +8,8 @@ document.addEventListener("alpine:init", () => {
       { id: 4, name: "Aceh Gayo", img: "4.jpg", price: 35000 },
       { id: 5, name: "Sumatra Mandheling", img: "5.jpg", price: 40000 },
     ],
+
+    // Format ke rupiah
     rupiah(number) {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
@@ -20,30 +22,42 @@ document.addEventListener("alpine:init", () => {
   // Store untuk keranjang belanja
   Alpine.store("cart", {
     items: [],
+    total: 0,
 
-    // Menambahkan item ke keranjang (selalu buat baris baru)
+    // Menambahkan item ke keranjang
     add(newItem) {
-      this.items.push({
-        ...newItem,
-        quantity: 1,
-        total: newItem.price,
-        key: Date.now() + Math.random(), // biar unik meskipun item sama
-      });
+      const cartItem = this.items.find((item) => item.id === newItem.id);
+
+      if (!cartItem) {
+        this.items.push({
+          ...newItem,
+          quantity: 1,
+          total: newItem.price,
+        });
+      } else {
+        cartItem.quantity++;
+        cartItem.total = cartItem.price * cartItem.quantity;
+      }
+
+      this.total += newItem.price;
     },
 
-    // Tambah jumlah 1 item
+    // Menambah jumlah 1 item
     increase(item) {
       item.quantity++;
       item.total = item.price * item.quantity;
+      this.total += item.price;
     },
 
-    // Kurangi jumlah 1 item
+    // Mengurangi jumlah 1 item
     decrease(item) {
       if (item.quantity > 1) {
         item.quantity--;
         item.total = item.price * item.quantity;
+        this.total -= item.price;
       } else {
-        this.items = this.items.filter((i) => i !== item);
+        this.items = this.items.filter((i) => i.id !== item.id);
+        this.total -= item.price;
       }
     },
 
@@ -56,9 +70,9 @@ document.addEventListener("alpine:init", () => {
       }).format(number);
     },
 
-    // Jumlah total item
+    // Jumlah total item dari semua quantity
     get quantity() {
-      return this.items.length;
+      return this.items.reduce((sum, item) => sum + item.quantity, 0);
     },
   });
 });
