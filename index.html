@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,8 +21,19 @@
 
     <!-- My Style -->
     <link rel="stylesheet" href="style.css" />
-  </head>
+
+<!-- alpineJS -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+<!-- appp -->
+ <script src="src/app.js"></script>
+
+ </head>
   <body>
+
+
+
     <!-- Navbar start -->
     <nav class="navbar">
       <a href="#" class="navbar-logo">Kenangan<span>senja</span>.</a>
@@ -167,7 +180,7 @@
     <!-- menu section end-->
 
     <!-- products section start -->
-<section class="products" id="products">
+<section class="products" id="products" x-data="products">
   <h2><span>Produk Unggulan</span> Kami</h2>
   <p>
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
@@ -175,13 +188,15 @@
   </p>
 
   <div class="row">
+<template x-for="(item, index) in items" x-key="index">
+
     <div class="product-card">
       <div class="product-icons">
         <a href="#"><i data-feather="shopping-cart"></i></a>
         <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
       </div>
       <div class="product-image">
-        <img src="img/products/1.jpeg" alt="Product 1" />
+        <img src="`img/products/1.jpeg`" alt="Product 1" />
       </div>
       <div class="product-content">
         <h3>Coffe Mountain Breeze</h3>
@@ -195,48 +210,7 @@
         <div class="product-price">IDR 30K <span>IDR 55K</span></div>
       </div>
     </div>
-
-    <div class="product-card">
-      <div class="product-icons">
-        <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-      </div>
-      <div class="product-image">
-        <img src="img/products/2.jpg" alt="Product 2" />
-      </div>
-      <div class="product-contect">
-        <h3>Coffe Rustic Roast</h3>
-        <div class="product-stars">
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star"></i>
-        </div>
-        <div class="product-price">IDR 35K <span>IDR 65K</span></div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-icons">
-        <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-      </div>
-      <div class="product-image">
-        <img src="img/products/1.jpeg" alt="Product 1" />
-      </div>
-      <div class="product-contect">
-        <h3>Coffe Beans 1</h3>
-        <div class="product-stars">
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star" class="star-full"></i>
-          <i data-feather="star"></i>
-        </div>
-        <div class="product-price">IDR 30K <span>IDR 55K</span></div>
-      </div>
-    </div>
+    </template>
   </div>
 </section>
 <!-- products section end -->
@@ -330,9 +304,7 @@
     <!-- modal box item detail end  -->
 
     <!-- Feather Icons -->
-    <script>
-      feather.replace();
-    </script>
+    <script> feather.replace(); </script>
 
     <!-- My Javascript-->
     <script src="js/script.js"></script>
