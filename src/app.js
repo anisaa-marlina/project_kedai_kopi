@@ -1,4 +1,5 @@
 document.addEventListener("alpine:init", () => {
+  // Produk yang ditampilkan
   Alpine.data("products", () => ({
     items: [
       { id: 1, name: "Robusta Brazil", img: "1.jpeg", price: 20000 },
@@ -16,54 +17,48 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
+  // Store untuk keranjang belanja
   Alpine.store("cart", {
     items: [],
-    total: 0,
-    quantity: 0,
 
+    // Menambahkan item ke keranjang (selalu buat baris baru)
     add(newItem) {
-      const item = this.items.find((i) => i.id === newItem.id);
-      if (item) {
-        item.quantity++;
-        item.total = item.price * item.quantity;
-      } else {
-        this.items.push({
-          ...newItem,
-          quantity: 1,
-          total: newItem.price,
-        });
-      }
-
-      this.quantity++;
-      this.total += newItem.price;
+      this.items.push({
+        ...newItem,
+        quantity: 1,
+        total: newItem.price,
+        key: Date.now() + Math.random(), // biar unik meskipun item sama
+      });
     },
 
+    // Tambah jumlah 1 item
     increase(item) {
       item.quantity++;
       item.total = item.price * item.quantity;
-      this.quantity++;
-      this.total += item.price;
     },
 
+    // Kurangi jumlah 1 item
     decrease(item) {
       if (item.quantity > 1) {
         item.quantity--;
         item.total = item.price * item.quantity;
-        this.quantity--;
-        this.total -= item.price;
       } else {
-        this.items = this.items.filter((i) => i.id !== item.id);
-        this.quantity--;
-        this.total -= item.price;
+        this.items = this.items.filter((i) => i !== item);
       }
     },
 
+    // Format harga
     rupiah(number) {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
         minimumFractionDigits: 0,
       }).format(number);
+    },
+
+    // Jumlah total item
+    get quantity() {
+      return this.items.length;
     },
   });
 });
