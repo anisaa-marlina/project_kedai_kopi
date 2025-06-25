@@ -310,7 +310,13 @@ body {
 
 .about p,
 .menu p,
-.products p,
+.products p {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #ccc; /* opsional: untuk warna biar lebih enak dibaca */
+}
+
 .contact p {
   text-align: left;
   max-width: 30rem;
