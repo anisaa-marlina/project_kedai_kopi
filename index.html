@@ -180,7 +180,10 @@
     <!-- menu section end-->
 
     <!-- products section start -->
+
 <section class="products" id="products" x-data="products">
+    <h2><span>Produk Unggulan</span> Kami</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ullam eum optio doloremque at alias?</p>
   <div class="row">
     <template x-for="item in items" :key="item.id">
       <div class="product-card">
@@ -228,8 +231,7 @@
           </div>
 
           <!-- Harga -->
-          <div class="product-price">
-            IDR <span x-text="(item.price / 1000) + 'K'"></span>
+          <div class="product-price"><span x-text="item.price"></span>
           </div>
         </div>
 
